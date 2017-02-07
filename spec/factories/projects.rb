@@ -65,6 +65,14 @@ FactoryGirl.define do
     initialize_with { Tmuxinator::Project.new(file) }
   end
 
+  factory :tmate_project, class: Tmuxinator::Project do
+    transient do
+      file { yaml_load("spec/fixtures/sample_tmate.yml") }
+    end
+
+    initialize_with { Tmuxinator::Project.new(file) }
+  end
+
   factory :noname_project, class: Tmuxinator::Project do
     transient do
       file { yaml_load("spec/fixtures/noname.yml") }

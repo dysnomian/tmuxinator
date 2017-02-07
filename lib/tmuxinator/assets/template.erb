@@ -14,7 +14,7 @@ unset RBENV_DIR
 
   # Create the session and the first window. Manually switch to root
   # directory if required to support tmux < 1.9
-  TMUX= <%= tmux_new_session_command %>
+  <%= "TMUX= " unless tmux == 'tmate' %><%= tmux_new_session_command %>
   <% if windows.first.root? %>
   <%= windows.first.tmux_window_command_prefix %> <%= "cd #{windows.first.root}".shellescape %> C-m
   <% end %>
